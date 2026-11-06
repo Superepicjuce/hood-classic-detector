@@ -111,6 +111,8 @@ def main():
 
                     if sound.is_file():
                         subprocess.run(["afplay", str(sound)])
+                    else:
+                        print(f"Sound file missing: {sound}")
 
                     if track["state"] == "playing":
                         subprocess.run(
@@ -118,8 +120,6 @@ def main():
                              'tell application "Music" to play'],
                             capture_output=True
                         )
-                    else:
-                        print(f"Sound file missing: {sound}")
 
             time.sleep(POLL)
 
